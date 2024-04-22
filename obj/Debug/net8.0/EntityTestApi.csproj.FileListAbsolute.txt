@@ -103,3 +103,4 @@ C:\Users\PC\Documents\Projects\EntityTestApi\obj\Debug\net8.0\refint\EntityTestA
 C:\Users\PC\Documents\Projects\EntityTestApi\obj\Debug\net8.0\EntityTestApi.pdb
 C:\Users\PC\Documents\Projects\EntityTestApi\obj\Debug\net8.0\EntityTestApi.genruntimeconfig.cache
 C:\Users\PC\Documents\Projects\EntityTestApi\obj\Debug\net8.0\ref\EntityTestApi.dll
+C:\Users\PC\Documents\Projects\EntityTestApi\obj\Debug\net8.0\EntityTestApi.sourcelink.json

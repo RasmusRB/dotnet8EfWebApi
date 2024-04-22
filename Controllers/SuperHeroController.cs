@@ -39,11 +39,25 @@ namespace EntityTestApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<SuperHero>> AddHero(SuperHero hero)
+        public async Task<ActionResult> AddHero(AddSuperHero hero)
         {
-            _context.Add(hero);
+            // Create a new SuperHero entity and populate it with data from AddSuperHero
+            var superHero = new SuperHero
+            {
+                Handle = hero.Handle,
+                Firstname = hero.Firstname,
+                Lastname = hero.Lastname,
+                City = hero.City
+            };
+
+            // Add the new SuperHero entity to the context
+            _context.SuperHeroes.Add(superHero);
+
+            // Save changes to the database
             await _context.SaveChangesAsync();
-            return Ok(hero);
+
+            // Return the added SuperHero
+            return Ok(superHero);
         }
 
         [HttpPut]
@@ -57,14 +71,16 @@ namespace EntityTestApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<int>> DeleteHero(int id)
         {
-            SuperHero hero = await _context.SuperHeroes.FindAsync(id);
+            SuperHero hero = await _context.SuperHeroes.FindAsync(id)!;
             if (hero is null)
             {
                 return NotFound("Hero not found");
             }
+
             _context.SuperHeroes.Remove(hero);
             await _context.SaveChangesAsync();
-            return Ok(hero);
+
+            return Ok(hero.Id);
         }
     }
 }
